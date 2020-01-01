@@ -11,11 +11,11 @@ class DiceGame extends StatefulWidget {
 }
 
 class _DiceGameState extends State<DiceGame> {
-  var _p1d1 = 0;
-  var _p1d2 = 0;
+  var _p1d1 = 1;
+  var _p1d2 = 1;
 
-  var _p2d1 = 0;
-  var _p2d2 = 0;
+  var _p2d1 = 1;
+  var _p2d2 = 1;
 
   bool _toss = false;
   var _p1toss = 0;
@@ -268,12 +268,12 @@ class _DiceGameState extends State<DiceGame> {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: <Widget>[
         player == 1
-            ? Expanded(child:Image.asset('assets/dice$_p1d1.jpeg'))
-            : Expanded(child:Image.asset('assets/dice$_p2d1.jpeg')),
+            ? Expanded(child:Image.asset('assets/dice$_p1d1.png'))
+            : Expanded(child:Image.asset('assets/dice$_p2d1.png')),
             SizedBox(width: 15,),
         player == 1
-            ? Expanded(child:Image.asset('assets/dice$_p1d2.jpeg'))
-            : Expanded(child:Image.asset('assets/dice$_p2d2.jpeg'))
+            ? Expanded(child:Image.asset('assets/dice$_p1d2.png'))
+            : Expanded(child:Image.asset('assets/dice$_p2d2.png'))
       ],
     );
   }
