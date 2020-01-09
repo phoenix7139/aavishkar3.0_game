@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'dart:ui';
 import 'dart:math';
 import 'package:flutter/services.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import 'package:dio/dio.dart';
 
 import 'package:dio/dio.dart';
 
@@ -44,16 +47,18 @@ class _UpDownGameState extends State<UpDownGame> {
     data: {"email": "romitkarmakar@gmail.com"});
 
     choice=response.data["result"];
-    coins_left=response.data["coins"];
+
   } catch (e) {
     print(e);
   }
 }
-void wish2() async {
+void submit() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
   try {
     Response response = await Dio().post("https://aavishkargames.herokuapp.com/sevenup/create", 
-    data: {"email": "romitkarmakar@gmail.com"});
+    data: {"email": "romitkarmakar@gmail.com", "status": result});
     coins_left=response.data["coins"];
+    await prefs.setInt('coins', coins_left);
   } catch (e) {
     print(e);
   }
