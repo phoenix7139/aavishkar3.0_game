@@ -6,6 +6,8 @@ import 'app/views/home_page.dart';
 import 'close-the-box/views/dice_game.dart';
 import '21-card-game/views/21_game.dart';
 import 'app/views/store.dart';
+import '7-up-7-down/layout.dart';
+import 'profile.dart';
 
 void main() {
   //debugPaintSizeEnabled = true;
@@ -42,9 +44,9 @@ class _MyAppState extends State<MyApp> {
           accentColor: Colors.grey),
       routes: {
         "/": (BuildContext context) => HomePage(),
-        "/dicegame": (BuildContext context) => DiceGame(),
+        "/dicegame": (BuildContext context) => UpDownGame(),
         "/21game": (BuildContext context) => CardGame(),
-        "/store": (BuildContext context) => TokenStore(),
+        "/store": (BuildContext context) => Profile_page(),
       },
     );
   }
