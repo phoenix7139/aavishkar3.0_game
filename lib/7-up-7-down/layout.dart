@@ -52,17 +52,7 @@ class _UpDownGameState extends State<UpDownGame> {
     print(e);
   }
 }
-void submit() async {
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  try {
-    Response response = await Dio().post("https://aavishkargames.herokuapp.com/sevenup/create", 
-    data: {"email": "romitkarmakar@gmail.com", "status": result});
-    coins_left=response.data["coins"];
-    await prefs.setInt('coins', coins_left);
-  } catch (e) {
-    print(e);
-  }
-}
+
   }
 
   @override
@@ -168,6 +158,7 @@ void submit() async {
     color: Colors.blueGrey,
     onPressed: (){
       setState(() {
+        
           if(five==true|| ten==true ||twenty==true)
           {
             picked=true;
@@ -314,7 +305,18 @@ void submit() async {
             
             result="winner";
           }
-          
+          void submit() async {
+            SharedPreferences prefs = await SharedPreferences.getInstance();
+            try {
+                  Response response = await Dio().post("https://aavishkargames.herokuapp.com/sevenup/create", 
+                  data: {"email": "romitkarmakar@gmail.com", "status": result});
+                  coins_left=response.data["coins"];
+                  await prefs.setInt('coins', coins_left);
+                } catch (e) {
+                  print(e);
+                }
+          }
+          submit();
         });
     },
     child: Text('START',
